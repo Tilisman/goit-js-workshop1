@@ -1183,8 +1183,8 @@ audi.price = 51000;
 console.log(audi.price); // 49000 */
 
 //* #16 
-class Car {
-    static# MAX_PRICE = 50000;
+/* class Car {
+    static #MAX_PRICE = 50000;
     // Пиши код ниже этой строки
     static checkPrice(price) {
             if (price > Car.#MAX_PRICE) {
@@ -1202,4 +1202,445 @@ const audi = new Car({ price: 36000 });
 const bmw = new Car({ price: 64000 });
 
 console.log(Car.checkPrice(audi.price)); // Всё хорошо, цена в порядке.
-console.log(Car.checkPrice(bmw.price)); // Внимание! Цена превышает допустимую.
+console.log(Car.checkPrice(bmw.price)); // Внимание! Цена превышает допустимую. */
+
+//* #17
+
+/* class User {
+  email;
+
+  constructor(email) {
+    this.email = email;
+  }
+
+  get email() {
+    return this.email;
+  }
+
+  set email(newEmail) {
+    this.email = newEmail;
+  }
+}
+// Пиши код ниже этой строки
+class Admin extends User {
+static AccessLevel = { BASIC: 'basic', SUPERUSER: 'superuser' };
+} */
+
+/* //* #18
+class User {
+    email;
+  
+    constructor(email) {
+      this.email = email;
+    }
+  
+    get email() {
+      return this.email;
+    }
+  
+    set email(newEmail) {
+      this.email = newEmail;
+    }
+  }
+  
+  class Admin extends User {
+    // Пиши код ниже этой строки
+  
+    static AccessLevel = {
+      BASIC: 'basic',
+      SUPERUSER: 'superuser'
+    };
+    accessLevel;
+    constructor({ email = 'mail@mail.com', accessLevel }){
+        super(email);
+      this.email = email;
+      this.accessLevel = accessLevel;
+    }
+  
+    // Пиши код выше этой строки
+  }
+  
+  const mango = new Admin({
+    email: 'mango@mail.com',
+    accessLevel: Admin.AccessLevel.SUPERUSER
+  });
+  
+  console.log(mango.email); // mango@mail.com
+  console.log(mango.accessLevel); // superuser */
+
+//* #19
+
+/* class User {
+    email;
+  
+    constructor(email) {
+      this.email = email;
+    }
+  
+    get email() {
+      return this.email;
+    }
+  
+    set email(newEmail) {
+      this.email = newEmail;
+    }
+  }
+  class Admin extends User {
+    // Пиши код ниже этой строки
+  
+    static AccessLevel = {
+      BASIC: 'basic',
+      SUPERUSER: 'superuser'
+    };
+  
+    accessLevel;
+    blacklistedEmails = [];
+    
+    blacklist(email) {
+    this.blacklistedEmails.push(email);
+    }
+    
+    isBlacklisted(email) {
+     return this.blacklistedEmails.includes(email);
+    }
+  
+    constructor({ email, accessLevel }) {
+      super(email);
+      this.accessLevel = accessLevel;
+    }
+  
+    // Пиши код выше этой строки
+  }
+  
+  const mango = new Admin({
+    email: 'mango@mail.com',
+    accessLevel: Admin.AccessLevel.SUPERUSER
+  });
+  
+  console.log(mango.email); // mango@mail.com
+  console.log(mango.accessLevel); // superuser
+  mango.blacklist('poly@mail.com');
+  console.log(mango.blacklistedEmails); // 'poly@mail.com'
+  console.log(mango.isBlacklisted('mango@mail.com')); //  false
+  console.log(mango.isBlacklisted('poly@mail.com')); // true  */
+
+  //! ============MODULE-6============== !//
+
+//* #1
+/* function calculateTotalPrice(orderedItems) {
+    let totalPrice = 0;
+    // Пиши код ниже этой строки
+  
+
+    orderedItems.forEach(item => {
+        return totalPrice += item;
+        
+    });
+    
+    // Пиши код выше этой строки
+    return totalPrice;
+  }
+
+  calculateTotalPrice([1,2,3,4,5]); */
+
+//* #3
+
+  /* function getCommonElements(firstArray, secondArray) {
+    const commonElements = [];
+    // Пиши код ниже этой строки
+  
+     firstArray.forEach(item => {
+      if (secondArray.includes(item)) {
+        commonElements.push(item);
+      }
+     });
+  
+    return commonElements;
+    // Пиши код выше этой строки
+  } */
+
+//* #9
+
+/* function changeEven(numbers, value) {
+    // Пиши код ниже этой строки
+  let newNumbers = [];
+    numbers.forEach(number => {
+      if (number % 2 === 0) {
+        newNumbers.push(number + value);
+      }
+      if (number % 2 !== 0) {
+        newNumbers.push(number);
+      }
+    });
+    console.log(newNumbers);
+  return newNumbers;
+    // Пиши код выше этой строки
+  }
+
+  changeEven([2, 8, 3, 7, 4, 6], 10); */
+
+
+ //* #10
+/*   const planets = ['Земля', 'Марс', 'Венера', 'Юпитер'];
+// Пиши код ниже этой строки
+const planetsLengths = planets.map((planet) => planet.length); */
+
+ 
+
+//* #16
+//* Используя array.indexOf(genre) выполняем поиск первого совпадения текущего
+//* элемента course и получаем его индекс в оригинальном массиве всех курсов. 
+//* В параметре index хранится индекс текущего элемента genre при переборе массива 
+//* методом filter.
+
+//* Если результат indexOf() и значение index равны - это уникальный элемент, потому 
+//* что это первый раз когда такое значение встречается в массиве и на текущей итерации 
+//* фильтр обрабатывает именно его.
+/* const books = [
+    {
+      title: 'Последнее королевство',
+      author: 'Бернард Корнуэлл',
+      genres: ['приключения', 'историческое']
+    },
+    {
+      title: 'На берегу спокойных вод',
+      author: 'Роберт Шекли',
+      genres: ['фантастика', 'мистика']
+    },
+    {
+      title: 'Красна как кровь',
+      author: 'Ли Танит',
+      genres: ['ужасы', 'мистика', 'приключения']
+    }
+  ];
+  // Пиши код ниже этой строки
+  const allGenres = books.flatMap(book => book.genres);
+  const uniqueGenres = allGenres.filter((genre, index, array) => array.indexOf(genre) === index); */
+//* #17
+
+//* EXAMPLE
+/* const LOW_SCORE = 50;
+const HIGH_SCORE = 80;
+const students = [
+  { name: 'Манго', score: 83 },
+  { name: 'Поли', score: 59 },
+  { name: 'Аякс', score: 37 },
+  { name: 'Киви', score: 94 },
+  { name: 'Хьюстон', score: 64 },
+];
+
+const best = students.filter((student) => student.score >= HIGH_SCORE);
+console.log(best); // Массив объектов с именами Манго и Киви
+
+const worst = students.filter((student) => student.score < LOW_SCORE);
+console.log(worst); // Массив с одним объектом Аякс
+
+// В коллбек-функции удобно деструктуризировать свойства объекта
+const average = students.filter(
+  ({ score }) => score >= LOW_SCORE && score < HIGH_SCORE
+);
+console.log(average); // Массив объектов с именами Поли и Хьюстон */
+// ==================
+/* const books = [
+    { title: 'Последнее королевство', author: 'Бернард Корнуэлл', rating: 8.38 },
+    { title: 'На берегу спокойных вод', author: 'Роберт Шекли', rating: 8.51 },
+    { title: 'Сон смешного человека', author: 'Федор Достоевский', rating: 7.75 },
+    { title: 'Красна как кровь', author: 'Ли Танит', rating: 7.94 },
+    { title: 'Враг Божий', author: 'Бернард Корнуэлл', rating: 8.67 }
+  ];
+  
+  const MIN_RATING = 8;
+  const AUTHOR = 'Бернард Корнуэлл';
+  // Пиши код ниже этой строки
+  
+  const topRatedBooks = books.filter(book => book.rating >= MIN_RATING);
+  const booksByAuthor = books.filter(book => book.author === AUTHOR); */
+
+//* #20 
+// Пиши код ниже этой строки
+/* const getUsersWithFriend = (users, friendName) => {
+    const usersWithFriend = users.filter(user => user.friends.includes(friendName))
+    return usersWithFriend;
+  }; */
+  // Пиши код выше этой строки
+
+//* #21
+
+  /* const getFriends = (users) => {
+    const allFriends = users.flatMap(user => user.friends);
+    const uniqueFriends = allFriends.filter((friend, index, array) => array.indexOf(friend) === index)
+  return uniqueFriends;
+    }; */
+//* #31
+/*     const players = [
+        { name: 'Манго', playtime: 1270, gamesPlayed: 4 },
+        { name: 'Поли', playtime: 469, gamesPlayed: 2 },
+        { name: 'Аякс', playtime: 690, gamesPlayed: 3 },
+        { name: 'Киви', playtime: 241, gamesPlayed: 1 },
+      ];
+      // Пиши код ниже этой строки
+      
+      const totalAveragePlaytimePerGame = players.reduce((a, b) => a + (b.playtime / b.gamesPlayed), 0);
+      console.log(totalAveragePlaytimePerGame); */
+
+     const users = [
+        {
+          name: 'Moore Hensley',
+          email: 'moorehensley@indexia.com',
+          eyeColor: 'blue',
+          friends: ['Sharron Pace'],
+          isActive: false,
+          balance: 2811,
+          gender: 'male'
+        },
+        {
+          name: 'Sharlene Bush',
+          email: 'sharlenebush@tubesys.com',
+          eyeColor: 'blue',
+          friends: ['Briana Decker', 'Sharron Pace'],
+          isActive: true,
+          balance: 3821,
+          gender: 'female'
+        },
+        {
+          name: 'Ross Vazquez',
+          email: 'rossvazquez@xinware.com',
+          eyeColor: 'green',
+          friends: ['Marilyn Mcintosh', 'Padilla Garrison', 'Naomi Buckner'],
+          isActive: false,
+          balance: 3793,
+          gender: 'male'
+        },
+        {
+          name: 'Elma Head',
+          email: 'elmahead@omatom.com',
+          eyeColor: 'green',
+          friends: ['Goldie Gentry', 'Aisha Tran'],
+          isActive: true,
+          balance: 2278,
+          gender: 'female'
+        },
+        {
+          name: 'Carey Barr',
+          email: 'careybarr@nurali.com',
+          eyeColor: 'blue',
+          friends: ['Jordan Sampson', 'Eddie Strong'],
+          isActive: true,
+          balance: 3951,
+          gender: 'male'
+        },
+        {
+          name: 'Blackburn Dotson',
+          email: 'blackburndotson@furnigeer.com',
+          eyeColor: 'brown',
+          friends: ['Jacklyn Lucas', 'Linda Chapman'],
+          isActive: false,
+          balance: 1498,
+          gender: 'male'
+        },
+        {
+          name: 'Sheree Anthony',
+          email: 'shereeanthony@kog.com',
+          eyeColor: 'brown',
+          friends: ['Goldie Gentry', 'Briana Decker'],
+          isActive: true,
+          balance: 2764,
+          gender: 'female'
+        }
+      ]
+//* #33
+      // Пиши код ниже этой строки
+/* const getTotalFriendCount = users => {
+    const totalFriends = users.reduce((total, user) => {
+        return total + user.friends.length;
+    }, 0);
+   return totalFriends;
+ };
+ getTotalFriendCount(users); */
+ // Пиши код выше этой строки
+
+//* #36
+
+ /* const authors = [
+    'Ли Танит',
+    'Бернард Корнуэлл',
+    'Роберт Шекли',
+    'Федор Достоевский',
+    'Говард Лавкрафт'
+  ];
+  // Пиши код ниже этой строки
+  
+  const authorsInAlphabetOrder = [...authors].sort((a,b) => a.localeCompare(b));
+  
+  const authorsInReversedOrder = [...authors].sort((a,b) => b.localeCompare(a)); */
+
+
+  //* #37
+  /* const books = [
+    { title: 'Последнее королевство', author: 'Бернард Корнуэлл', rating: 8.38 },
+    { title: 'На берегу спокойных вод', author: 'Роберт Шекли', rating: 8.51 },
+    { title: 'Сон смешного человека', author: 'Федор Достоевский', rating: 7.75 },
+    { title: 'Красна как кровь', author: 'Ли Танит', rating: 7.94 },
+    { title: 'Враг Божий', author: 'Бернард Корнуэлл', rating: 8.67 }
+  ];
+  // Пиши код ниже этой строки
+  
+  const sortedByAuthorName = [...books].sort((fB,sB) => fB.author.localeCompare(sB.author));
+  
+  const sortedByReversedAuthorName = [...books].sort((fB,sB) => sB.author.localeCompare(fB.author));
+  
+  const sortedByAscendingRating = [...books].sort((fB,sB) => fB.rating - sB.rating);
+  
+  const sortedByDescentingRating = [...books].sort((fB,sB) => sB.rating - fB.rating); */
+
+
+//* #40
+  const sortByName = users => {
+    const A = [...users].sort((a, b) => a.name.localeCompare(b.name));
+    return A;
+  };
+
+//* #41
+  /* const books = [
+    { title: 'Последнее королевство', author: 'Бернард Корнуэлл', rating: 8.38 },
+    { title: 'На берегу спокойных вод', author: 'Роберт Шекли', rating: 8.51 },
+    { title: 'Сон смешного человека', author: 'Федор Достоевский', rating: 7.75 },
+    { title: 'Красна как кровь', author: 'Ли Танит', rating: 8.14 },
+    { title: 'Сны В Ведьмином Доме', author: 'Говард Лавкрафт', rating: 8.67 }
+  ];
+  const MIN_BOOK_RATING = 8;
+  // Пиши код ниже этой строки
+  
+  const names = books
+          .filter(e => e.rating > MIN_BOOK_RATING)
+          .map(e => e.author)
+          .sort((a,b) => a.localeCompare(b)); */
+
+//* #41
+/* const getNamesSortedByFriendCount = users => {
+    const a = [...users]
+        .sort((a, b) => a.friends.length - b.friends.length)
+        .map(e => e.name)
+    return a;
+}; */
+
+
+//* #43
+/* const getSortedFriends = users => {
+    const a = users
+    .flatMap(e => e.friends)
+    .filter((friend, index, array) => array.indexOf(friend) === index)
+    .sort((a, b) => a.localeCompare(b));
+    return a;
+  }; */
+
+/* const getTotalBalanceByGender = (users, gender) => {
+    const a = users
+        .filter(e => e.gender === gender)
+        .reduce((total, balance) => {return total + balance.balance}, 0) 
+    
+    return a;
+};
+
+getTotalBalanceByGender (users, 'male');
+getTotalBalanceByGender (users, 'female'); */
